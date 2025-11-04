@@ -1,123 +1,116 @@
+📦 Excel Invoice System
 
-# 📦 Excel Invoice System By Guransh Dhaliwal
+By Guransh Dhaliwal
 
-## 🧾 Overview
+🧾 Overview
 
-This project walks you through building a dynamic invoice system in Microsoft Excel using formulas, dropdowns, and VBA macros. It’s designed for beginners who want to automate calculations, manage products from a separate sheet, and convert quantities from kilograms to pounds. Make sure to view the releases for the latest code For this Project!
+This project shows you how to make a simple invoice system in Microsoft Excel using formulas, dropdowns, and VBA code.
+It’s great for beginners who want to automate math, organize products, and even convert kilograms to pounds automatically.
+You can also check out the latest version of the project in the Releases section!
 
----
+🚀 Features
 
-## 🚀 Features
+Automatically adds up totals, taxes, and grand total
 
-- Auto-calculation of totals, taxes, and grand total  
-- Quantity conversion from kilograms to pounds  
-- Product selection via dropdown (linked to a separate sheet)  
-- Unit price autofill and row-wise total calculation  
-- VBA macro for automation and dynamic updates  
-- Named ranges for easy data validation  
-- Expandable design for more products and rows  
-- Developer shortcuts for quick access to tools
+Converts quantities from kilograms to pounds
 
----
+Lets you pick products from a dropdown menu
 
-## 📁 Setup Instructions
+Fills in prices and totals automatically
 
-### 1. Create Your Workbook
+Uses a VBA macro to do tasks automatically
 
-- Open Excel → **File → New → Blank Workbook**
-- Save immediately:
-  - File → Save As → Choose location
-  - Name: `Invoice.xlsm`
-  - Save as type: **Excel Macro-Enabled Workbook (*.xlsm)**
+Easy to edit and expand for more products
 
----
+Developer tools for quick access
 
-## 📑 Setting Up Sheets
+📁 Setup Instructions
+1. Create Your Workbook
 
-### Sheet1 → Rename to `Invoice`  
-This is your main invoice interface.
+Open Excel → File → New → Blank Workbook
 
-### Sheet2 → Rename to `Products`  
-This sheet stores your product list for dropdowns.
+Save it right away:
 
----
+Go to File → Save As
 
-## 🛒 Adding Product Names on Sheet2 (Products)
+Choose a folder
 
-Enter product names in column A:
+Name it: Invoice.xlsm
 
-```
+Set Save as type to: Excel Macro-Enabled Workbook (.xlsm)*
+
+📑 Setting Up Sheets
+Sheet 1 → Rename to Invoice
+
+This is the main sheet where you’ll make invoices.
+
+Sheet 2 → Rename to Products
+
+This sheet will hold your product names for the dropdown list.
+
+🛒 Adding Product Names (Sheet2: Products)
+
+Type your product names in column A, like this:
+
 Product A  
 Product B  
 Product C  
 Product D
-```
 
-Optional: Create a named range:
 
-- Select cells A1:A10  
-- In the Name Box (top-left), type: `ProductsList`  
-- Press Enter
+Optional: Create a named list to make it easier later.
 
----
+Highlight A1:A10
 
-## 📊 Invoice Table Structure (Sheet1: Invoice)
+In the small box above column A, type: ProductsList
 
-Start your table at row 19:
+Press Enter
 
-| Column   | Description                       |
-|----------|-----------------------------------|
-| B19:B30  | Product Description (dropdown)    |
-| M19:M30  | Quantity (kg) — auto-converts     |
-| O19:O30  | Unit Price (default: 4.49)        |
-| P19:P30  | Total (`=M*O/100`)                |
+📊 Invoice Table Setup (Sheet1: Invoice)
 
-### Totals Section
+Start your table at row 19.
 
-| Cell | Formula / Label            |
-|------|----------------------------|
-| E31  | Subtotal: `=SUM(P19:P30)` |
-| E32  | Tax (13%): `=E31*0.13`     |
-| E33  | Grand Total: `=E31+E32`   |
+Column	What It’s For
+B19:B30	Product (dropdown list)
+M19:M30	Quantity (in kg, auto converts)
+O19:O30	Unit Price (default 4.49)
+P19:P30	Total (=M*O/100)
+Totals Section
+Cell	Label / Formula
+E31	Subtotal → =SUM(P19:P30)
+E32	Tax (13%) → =E31*0.13
+E33	Grand Total → =E31+E32
+🔽 Adding Product Dropdowns
 
----
+Highlight B19:B30
 
-## 🔽 Adding Dropdowns for Products
+Go to Data → Data Validation
 
-1. Select **B19:B30**  
-2. Go to **Data → Data Validation → Data Validation**  
-3. Under **Allow**, select **List**  
-4. In Source, enter:
+Under Allow, choose List
 
-```excel
+In Source, type:
+
 =ProductsList
-```
 
-Or, if you didn’t name the range:
 
-```excel
+If you didn’t name your list, use:
+
 =Products!$A$1:$A$10
-```
 
-5. Click **OK**
 
-Alternate access:  
-Right-click → Format Cells → Data Validation
+Click OK and you’re done!
 
----
+🧠 Adding the VBA Macro
+Open the VBA Editor
 
-## 🧠 VBA Macro for Automation
+Press Alt + F11, or
 
-### Open the VBA editor:
+Go to Developer → Visual Basic
 
-- Method 1: Press `Alt + F11`  
-- Method 2: Developer tab → Visual Basic  
-  - If Developer tab is hidden:  
-    - File → Options → Customize Ribbon → Check **Developer**
+If you don’t see the Developer tab:
+File → Options → Customize Ribbon → Check “Developer”
 
-### Paste the following code into Sheet1 (Invoice):
-
-```vba
+Paste This Code Into Sheet1 (Invoice)
 Private Sub Worksheet_Change(ByVal Target As Range)
     Dim rngM As Range, rngO As Range
     Dim row As Long
@@ -152,60 +145,57 @@ Private Sub Worksheet_Change(ByVal Target As Range)
 
     Application.EnableEvents = True
 End Sub
-```
 
-💾 Save your workbook as `.xlsm` to enable macros.
 
----
+💾 Save the file again as .xlsm to keep your macros working.
 
-## 🧪 How to Use the Invoice
+🧪 How to Use
 
-- Select a product from the dropdown in **B19:B30**
-- Enter quantity in **M19:M30** (kg) — auto-converts to pounds
-- Unit price autofills in **O19:O30**
-- Total in **P19:P30** calculates automatically
-- Subtotal, Tax, and Grand Total update in real time
-- You can manually adjust unit prices — totals will recalculate
+Pick a product from the dropdown in B19:B30
 
----
+Type a quantity in M19:M30 (kg → it’ll change to pounds)
 
-## 🧠 Tips for Beginners
+Unit price appears in O19:O30
 
-- Enable macros: Click **Enable Content** when opening the `.xlsm` file  
-- Add more products: Update `Products` sheet and named range  
-- Add more rows: Extend ranges in VBA and formulas  
-- Formula references:
-  - Subtotal: `=SUM(P19:P30)`
-  - Tax: `=Subtotal * 0.13`
-  - Grand Total: `=Subtotal + Tax`
-- Access Developer tools: `Alt + F11` or **Developer tab → Visual Basic**
+The total in P19:P30 calculates automatically
 
----
+Subtotal, Tax, and Grand Total update live
 
-## 🧭 Developer Shortcuts
+You can also edit prices manually if you want — everything updates automatically.
 
-| Action              | Shortcut / Location                     |
-|---------------------|------------------------------------------|
-| Open VBA Editor     | `Alt + F11` or Developer → Visual Basic |
-| Run/Edit Macros     | Developer → Macros                      |
-| Data Validation     | Data → Data Validation or Right-click   |
+💡 Tips for Beginners
 
----
+Always click Enable Content when you open the .xlsm file
 
-## 🧱 Visual Layout
+To add more products, update the Products sheet
 
-### Sheet1 (Invoice)
+To add more rows, edit the VBA and formula ranges
 
-```
+Formulas to remember:
+
+Subtotal → =SUM(P19:P30)
+
+Tax → =Subtotal * 0.13
+
+Grand Total → =Subtotal + Tax
+
+Open Developer tools quickly:
+
+Alt + F11 → VBA Editor
+
+⚡ Developer Shortcuts
+Action	Shortcut / Where to Find It
+Open VBA Editor	Alt + F11 or Developer → Visual Basic
+Run or Edit Macros	Developer → Macros
+Data Validation	Data → Data Validation
+🧱 Visual Layout
+Sheet1 (Invoice)
 +---------+-------------------+------------+----------+
-| B19:B30 | Product Description| M19:M30   | Quantity |
-| O19:O30 | Unit Price         | P19:P30   | Total    |
+| B19:B30 | Product Name      | M19:M30    | Quantity |
+| O19:O30 | Unit Price        | P19:P30    | Total    |
 +---------+-------------------+------------+----------+
-```
 
-### Sheet2 (Products)
-
-```
+Sheet2 (Products)
 +---------+
 | A1:A10  |
 | Product A|
@@ -213,6 +203,3 @@ End Sub
 | Product C|
 | Product D|
 +---------+
-```
-
-
