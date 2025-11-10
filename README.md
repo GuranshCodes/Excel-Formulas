@@ -1,30 +1,31 @@
-📦 Excel Invoice System
+<h1>📦 Excel Invoice System</h1>
 
-By Guransh Dhaliwal
+<h4>By Guransh Dhaliwal</h4>
 
-🧾 Overview
+<h5>🧾 Overview</h5>
 
 This project shows you how to make a simple invoice system in Microsoft Excel using formulas, dropdowns, and VBA code.
 It’s great for beginners who want to automate math, organize products, and even convert kilograms to pounds automatically.
 You can also check out the latest version of the project in the Releases section!
 
-🚀 Features
+<h5>🚀 Features</h5>
 
-Automatically adds up totals, taxes, and grand total
+<p>
+-Automatically adds up totals, taxes, and grand total
 
-Converts quantities from kilograms to pounds
+-Converts quantities from kilograms to pounds
 
-Lets you pick products from a dropdown menu
+-Lets you pick products from a dropdown menu
 
-Fills in prices and totals automatically
+-Fills in prices and totals automatically
 
-Uses a VBA macro to do tasks automatically
+-Uses a VBA macro to do tasks automatically
 
-Easy to edit and expand for more products
+-Easy to edit and expand for more products
 
-Developer tools for quick access
+-Developer tools for quick access</p>
 
-📁 Setup Instructions
+<h5>📁 Setup Instructions</h5>
 1. Create Your Workbook
 
 Open Excel → File → New → Blank Workbook
@@ -39,7 +40,8 @@ Name it: Invoice.xlsm
 
 Set Save as type to: Excel Macro-Enabled Workbook (.xlsm)*
 
-📑 Setting Up Sheets
+
+<h5>📑 Setting Up Sheets</h5>
 Sheet 1 → Rename to Invoice
 
 This is the main sheet where you’ll make invoices.
@@ -48,7 +50,7 @@ Sheet 2 → Rename to Products
 
 This sheet will hold your product names for the dropdown list.
 
-🛒 Adding Product Names (Sheet2: Products)
+<h5>🛒 Adding Product Names (Sheet2: Products)</h5>
 
 Type your product names in column A, like this:
 
@@ -66,21 +68,23 @@ In the small box above column A, type: ProductsList
 
 Press Enter
 
-📊 Invoice Table Setup (Sheet1: Invoice)
+<h5>📊 Invoice Table Setup (Sheet1: Invoice)</h5>
 
 Start your table at row 19.
 
 Column	What It’s For
 B19:B30	Product (dropdown list)
 M19:M30	Quantity (in kg, auto converts)
-O19:O30	Unit Price (default 4.49)
+O19:O30	Unit Price Rate (default 4.49)
 P19:P30	Total (=M*O/100)
 Totals Section
 Cell	Label / Formula
 E31	Subtotal → =SUM(P19:P30)
 E32	Tax (13%) → =E31*0.13
 E33	Grand Total → =E31+E32
-🔽 Adding Product Dropdowns
+
+
+<h5>🔽 Adding Product Dropdowns</h5>
 
 Highlight B19:B30
 
@@ -100,7 +104,7 @@ If you didn’t name your list, use:
 
 Click OK and you’re done!
 
-🧠 Adding the VBA Macro
+<h5>🧠 Adding the VBA Macro</h5>
 Open the VBA Editor
 
 Press Alt + F11, or
@@ -144,34 +148,34 @@ Private Sub Worksheet_Change(ByVal Target As Range)
     End If
 
     Application.EnableEvents = True
-End Sub
+    End Sub
 
 
-💾 Save the file again as .xlsm to keep your macros working.
+<h5>💾 Save the file again as .xlsm to keep your macros working.</h5>
 
-🧪 How to Use
+<h5>🧪 How to Use</h5>
 
-Pick a product from the dropdown in B19:B30
+-Pick a product from the dropdown in B19:B30
 
-Type a quantity in M19:M30 (kg → it’ll change to pounds)
+-Type a quantity in M19:M30 (kg → it’ll change to pounds)
 
-Unit price appears in O19:O30
+-Unit price appears in O19:O30
 
-The total in P19:P30 calculates automatically
+-The total in P19:P30 calculates automatically
 
-Subtotal, Tax, and Grand Total update live
+-Subtotal, Tax, and Grand Total update live
 
-You can also edit prices manually if you want — everything updates automatically.
+-You can also edit prices manually if you want — everything updates automatically.
 
-💡 Tips for Beginners
+<h5>💡 Tips for Beginners</h5>
 
-Always click Enable Content when you open the .xlsm file
+-Always click Enable Macro Content when you open the .xlsm file
 
-To add more products, update the Products sheet
+-To add more products, update the Products sheet
 
-To add more rows, edit the VBA and formula ranges
+-To add more rows, edit the VBA and formula ranges
 
-Formulas to remember:
+-Formulas to remember:
 
 Subtotal → =SUM(P19:P30)
 
@@ -183,12 +187,13 @@ Open Developer tools quickly:
 
 Alt + F11 → VBA Editor
 
-⚡ Developer Shortcuts
+<h5>⚡ Developer Shortcuts</h5>
+
 Action	Shortcut / Where to Find It
 Open VBA Editor	Alt + F11 or Developer → Visual Basic
 Run or Edit Macros	Developer → Macros
 Data Validation	Data → Data Validation
-🧱 Visual Layout
+<h5>🧱 Visual Layout</h5>
 Sheet1 (Invoice)
 +---------+-------------------+------------+----------+
 | B19:B30 | Product Name      | M19:M30    | Quantity |
