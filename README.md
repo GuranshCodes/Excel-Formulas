@@ -1,8 +1,8 @@
-<h1>📦 Excel Invoice System</h1>
+<h1>Excel Invoice System</h1>
 
 <h4>By Guransh Dhaliwal</h4>
 
-<h5>🧾 Overview</h5>
+<h5>Overview</h5>
 
 <p>
 This project shows you how to make a simple invoice system in Microsoft Excel using formulas, dropdowns, and VBA code.
@@ -10,7 +10,7 @@ It’s great for beginners who want to automate math, organize products, and eve
 You can also check out the latest version of the project in the Releases section!
 </p>
 
-<h5>🚀 Features</h5>
+<h5>Features</h5>
 <p>
 - Automatically adds up totals, taxes, and grand total<br>
 - Converts quantities from kilograms to pounds<br>
@@ -21,7 +21,7 @@ You can also check out the latest version of the project in the Releases section
 - Developer tools for quick access
 </p>
 
-<h5>📁 Setup Instructions</h5>
+<h5>Setup Instructions</h5>
 
 <p><strong>1. Create Your Workbook</strong></p>
 
@@ -34,7 +34,7 @@ Name it: <strong>Invoice.xlsm</strong><br>
 Set file type: <strong>Excel Macro-Enabled Workbook (.xlsm)</strong>
 </p>
 
-<h5>📑 Setting Up Sheets</h5>
+<h5>Setting Up Sheets</h5>
 
 <p>
 <strong>Sheet 1 → Rename to: Invoice</strong><br>
@@ -44,7 +44,7 @@ This is your main invoice page.<br><br>
 This sheet stores your product list for dropdowns.
 </p>
 
-<h5>🛒 Adding Product Names (Sheet2: Products)</h5>
+<h5>Adding Product Names (Sheet2: Products)</h5>
 
 <p>Type your product names in column A, like:</p>
 
@@ -61,7 +61,7 @@ Product D
 Highlight A1:A10 → In the Name Box type <strong>ProductsList</strong> → Press Enter
 </p>
 
-<h5>📊 Invoice Table Setup (Sheet1: Invoice)</h5>
+<h5>Invoice Table Setup (Sheet1: Invoice)</h5>
 
 <p><strong>Start your table at row 19.</strong></p>
 
@@ -84,7 +84,7 @@ Highlight A1:A10 → In the Name Box type <strong>ProductsList</strong> → Pres
 <tr><td>E33</td><td>Grand Total → =E31+E32</td></tr>
 </table>
 
-<h5>🔽 Adding Product Dropdowns</h5>
+<h5>Adding Product Dropdowns</h5>
 
 <p>
 Highlight <strong>B19:B30</strong><br>
@@ -101,7 +101,7 @@ Source:
 
 <p>Click OK.</p>
 
-<h5>🧠 Adding the VBA Macro</h5>
+<h5>Adding the VBA Macro</h5>
 
 <p><strong>Open the VBA Editor</strong></p>
 <p>
@@ -154,9 +154,9 @@ End Sub
 </code>
 </pre>
 
-<h5>💾 Save again as .xlsm</h5>
+<h5>Save again as .xlsm</h5>
 
-<h5>🧪 How to Use</h5>
+<h5>How to Use</h5>
 
 <p>
 - Pick a product in B19:B30<br>
@@ -167,7 +167,7 @@ End Sub
 - You can edit prices — everything still updates
 </p>
 
-<h5>💡 Tips for Beginners</h5>
+<h5>Tips for Beginners</h5>
 
 <p>
 - Click <strong>Enable Macro Content</strong> when opening<br>
@@ -183,7 +183,7 @@ Grand Total → =Subtotal + Tax<br><br>
 Alt + F11 → VBA Editor
 </p>
 
-<h5>⚡ Developer Shortcuts</h5>
+<h5>Developer Shortcuts</h5>
 
 <table border="1" cellpadding="6">
 <tr><th>Action</th><th>Shortcut</th></tr>
@@ -192,7 +192,7 @@ Alt + F11 → VBA Editor
 <tr><td>Data Validation</td><td>Data → Data Validation</td></tr>
 </table>
 
-<h5>🧱 Visual Layout</h5>
+<h5>Visual Layout</h5>
 <h3>Sheet1 (Invoice)</h3>
 <table border="1">
   <tr>
