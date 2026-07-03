@@ -31,7 +31,7 @@ Private Sub Worksheet_Change(ByVal Target As Range)
             Target.Value = mValue * 2.20462262
 
             ' =========================
-            ' PRICE SYSTEM (UPDATED)
+            ' PRICE SYSTEM
             ' =========================
             If Target.Value > 15000 Then
                 Me.Cells(row, 15).Value = 2.99
