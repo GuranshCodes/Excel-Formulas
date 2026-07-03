@@ -2,220 +2,143 @@
 
 <h4>By Guransh Dhaliwal</h4>
 
-<h5>Overview</h5>
+<hr>
+
+<h2>Overview</h2>
 
 <p>
-This project shows you how to make a simple invoice system in Microsoft Excel using formulas, dropdowns, and VBA code.
-It’s great for beginners who want to automate math, organize products, and even convert kilograms to pounds automatically.
-You can also check out the latest version of the project in the Releases section!
+The Excel Invoice System is a beginner-friendly project that demonstrates how to build a fully functional invoice generator in Microsoft Excel.
+It uses formulas, dropdown menus, and VBA automation to handle calculations, product selection, and unit conversion automatically.
 </p>
-
-<h5>Features</h5>
-<p>
-- Automatically adds up totals, taxes, and grand total<br>
-- Converts quantities from kilograms to pounds<br>
-- Lets you pick products from a dropdown menu<br>
-- Fills in prices and totals automatically<br>
-- Uses a VBA macro to do tasks automatically<br>
-- Easy to edit and expand for more products<br>
-- Developer tools for quick access
-</p>
-
-<h5>Setup Instructions</h5>
-
-<p><strong>1. Create Your Workbook</strong></p>
 
 <p>
-Open Excel → File → New → Blank Workbook<br><br>
-
-Save it right away:<br>
-File → Save As → choose a folder<br>
-Name it: <strong>Invoice.xlsm</strong><br>
-Set file type: <strong>Excel Macro-Enabled Workbook (.xlsm)</strong>
+This project is ideal for learning how to combine Excel features with basic automation to build real-world tools like invoicing systems, product trackers, and billing sheets.
+You can also find the latest version of this project in the <strong>Releases</strong> section.
 </p>
 
-<h5>Setting Up Sheets</h5>
+<h2>Features</h2>
+
+<ul>
+  <li>Automatic calculation of subtotal, tax, and grand total</li>
+  <li>Product selection using dropdown menus</li>
+  <li>Auto-filled pricing system</li>
+  <li>Quantity conversion (kilograms to pounds)</li>
+  <li>VBA automation for faster updates</li>
+  <li>Expandable product system</li>
+  <li>Clean and beginner-friendly structure</li>
+</ul>
+
+<h2>Setup Instructions</h2>
+
+<h3>1. Create Your Workbook</h3>
 
 <p>
-<strong>Sheet 1 → Rename to: Invoice</strong><br>
-This is your main invoice page.<br><br>
-
-<strong>Sheet 2 → Rename to: Products</strong><br>
-This sheet stores your product list for dropdowns.
+Open Microsoft Excel → Create a new blank workbook<br>
+Save immediately as: <strong>Invoice.xlsm</strong><br>
+File type: <strong>Excel Macro-Enabled Workbook (.xlsm)</strong>
 </p>
 
-<h5>Adding Product Names (Sheet2: Products)</h5>
-
-<p>Type your product names in column A, like:</p>
+<h3>2. Create Sheets</h3>
 
 <p>
-Product A<br>
-Product B<br>
-Product C<br>
-Product D
+Rename Sheet1 → <strong>Invoice</strong> (main invoice page)<br>
+Rename Sheet2 → <strong>Products</strong> (product database)
 </p>
 
-<p><strong>Optional: Create a Named Range</strong></p>
+<h3>3. Add Products</h3>
 
 <p>
-Highlight A1:A10 → In the Name Box type <strong>ProductsList</strong> → Press Enter
+In the <strong>Products</strong> sheet, enter product names in column A:
 </p>
-
-<h5>Invoice Table Setup (Sheet1: Invoice)</h5>
-
-<p><strong>Start your table at row 19.</strong></p>
-
-<table border="1" cellpadding="6">
-<tr><th>Column</th><th>Description</th></tr>
-<tr><td>B19:B30</td><td>Product (dropdown list)</td></tr>
-<tr><td>M19:M30</td><td>Quantity (kg → auto converts to lbs)</td></tr>
-<tr><td>O19:O30</td><td>Unit Price (default: 4.49)</td></tr>
-<tr><td>P19:P30</td><td>Total (=M*O/100)</td></tr>
-</table>
-
-<br>
-
-<h5>Totals Section</h5>
-
-<table border="1" cellpadding="6">
-<tr><th>Cell</th><th>Label / Formula</th></tr>
-<tr><td>E31</td><td>Subtotal → =SUM(P19:P30)</td></tr>
-<tr><td>E32</td><td>Tax (13%) → =E31*0.13</td></tr>
-<tr><td>E33</td><td>Grand Total → =E31+E32</td></tr>
-</table>
-
-<h5>Adding Product Dropdowns</h5>
-
-<p>
-Highlight <strong>B19:B30</strong><br>
-Data → Data Validation<br>
-Allow → List<br>
-Source:
-</p>
-
-<p><code>=ProductsList</code></p>
-
-<p>If you didn’t make a named list:</p>
-
-<p><code>=Products!$A$1:$A$10</code></p>
-
-<p>Click OK.</p>
-
-<h5>Adding the VBA Macro</h5>
-
-<p><strong>Open the VBA Editor</strong></p>
-<p>
-Alt + F11<br>
-or Developer → Visual Basic
-</p>
-
-<p><strong>If Developer tab is missing:</strong></p>
-
-<p>File → Options → Customize Ribbon → Check “Developer”</p>
-
-<p><strong>Paste this code into Sheet1 (Invoice)</strong></p>
 
 <pre>
-<code>
-Private Sub Worksheet_Change(ByVal Target As Range)
-    Dim rngM As Range, rngO As Range
-    Dim row As Long
-    Dim mValue As Double
-    Dim pFormula As String
-
-    If Target.CountLarge > 1 Then Exit Sub
-
-    Set rngM = Me.Range("M19:M30")
-    Set rngO = Me.Range("O19:O30")
-
-    Application.EnableEvents = False
-
-    If Not Intersect(Target, rngM) Is Nothing Then
-        row = Target.Row
-        If IsNumeric(Target.Value) And Target.Value <> "" Then
-            mValue = Target.Value * 2.20462262
-            Target.Value = mValue
-        Else
-            Target.Value = ""
-        End If
-        Me.Cells(row, "O").Value = 4.49
-        pFormula = "=M" & row & "*O" & row & "/100"
-        Me.Cells(row, "P").Formula = pFormula
-    End If
-
-    If Not Intersect(Target, rngO) Is Nothing Then
-        row = Target.Row
-        pFormula = "=M" & row & "*O" & row & "/100"
-        Me.Cells(row, "P").Formula = pFormula
-    End If
-
-    Application.EnableEvents = True
-End Sub
-</code>
+Product A
+Product B
+Product C
+Product D
 </pre>
 
-<h5>Save again as .xlsm</h5>
-
-<h5>How to Use</h5>
-
 <p>
-- Pick a product in B19:B30<br>
-- Type quantity in M19:M30 (kg → converts to lbs)<br>
-- Unit price fills into O19:O30<br>
-- Total updates in P19:P30<br>
-- Subtotal, Tax, Grand Total update automatically<br>
-- You can edit prices — everything still updates
+(Optional) Create a named range:
+Highlight A1:A10 → Name Box → type <strong>ProductsList</strong>
 </p>
 
-<h5>Tips for Beginners</h5>
+<h3>4. Invoice Table Setup</h3>
+
+<p>Start your invoice table at row 19:</p>
+
+<table border="1" cellpadding="6">
+<tr><th>Range</th><th>Purpose</th></tr>
+<tr><td>B19:B30</td><td>Product selection (dropdown)</td></tr>
+<tr><td>M19:M30</td><td>Quantity (kg → converted to lbs)</td></tr>
+<tr><td>O19:O30</td><td>Unit price</td></tr>
+<tr><td>P19:P30</td><td>Total calculation</td></tr>
+</table>
+
+<h3>5. Totals Section</h3>
+
+<table border="1" cellpadding="6">
+<tr><th>Cell</th><th>Formula</th></tr>
+<tr><td>E31</td><td>=SUM(P19:P30) (Subtotal)</td></tr>
+<tr><td>E32</td><td>=E31*0.13 (Tax)</td></tr>
+<tr><td>E33</td><td>=E31+E32 (Grand Total)</td></tr>
+</table>
+
+<h3>6. Add Product Dropdown</h3>
 
 <p>
-- Click <strong>Enable Macro Content</strong> when opening<br>
-- Add products in the Products sheet<br>
-- Extend ranges if you add rows<br><br>
-
-<b>Important formulas:</b><br>
-Subtotal → =SUM(P19:P30)<br>
-Tax → =Subtotal * 0.13<br>
-Grand Total → =Subtotal + Tax<br><br>
-
-<strong>Developer shortcut:</strong><br>
-Alt + F11 → VBA Editor
+Select <strong>B19:B30</strong><br>
+Go to Data → Data Validation → List<br>
+Use source:
 </p>
 
-<h5>Developer Shortcuts</h5>
+<pre>=ProductsList</pre>
+
+<p>
+Or use direct range:
+</p>
+
+<pre>=Products!$A$1:$A$10</pre>
+
+<h2>VBA Automation</h2>
+
+<h3>Enable Developer Tools</h3>
+
+<p>
+File → Options → Customize Ribbon → Enable <strong>Developer</strong> tab
+</p>
+
+<h3>Open VBA Editor</h3>
+
+<p>
+Press <strong>Alt + F11</strong> or go to Developer → Visual Basic
+</p>
+
+<h3>Paste The Code (Sheet1 - Invoice) </h3>
+<p>The code is placed in a file called excel_code.vba in this repo!</p>
+<h2>How to Use</h2>
+
+<ul>
+  <li>Select a product from the dropdown</li>
+  <li>Enter quantity in kilograms</li>
+  <li>Unit price auto-fills</li>
+  <li>Total updates automatically</li>
+  <li>Subtotal, tax, and grand total update instantly</li>
+</ul>
+
+<h2>Tips</h2>
+
+<ul>
+  <li>Enable macros when opening the file</li>
+  <li>Extend row ranges if needed</li>
+  <li>Modify product list anytime in the Products sheet</li>
+</ul>
+
+<h2>Keyboard Shortcuts</h2>
 
 <table border="1" cellpadding="6">
 <tr><th>Action</th><th>Shortcut</th></tr>
 <tr><td>Open VBA Editor</td><td>Alt + F11</td></tr>
-<tr><td>Run or Edit Macros</td><td>Developer → Macros</td></tr>
-<tr><td>Data Validation</td><td>Data → Data Validation</td></tr>
-</table>
-
-<h5>Visual Layout</h5>
-<h3>Sheet1 (Invoice)</h3>
-<table border="1">
-  <tr>
-    <td>B19:B30</td>
-    <td>Product Name</td>
-    <td>M19:M30</td>
-    <td>Quantity</td>
-  </tr>
-  <tr>
-    <td>O19:O30</td>
-    <td>Unit Price</td>
-    <td>P19:P30</td>
-    <td>Total</td>
-  </tr>
-</table>
-
-<br>
-
-<h3>Sheet2 (Products)</h3>
-<table border="1">
-  <tr><td>A1:A10</td></tr>
-  <tr><td>Product A</td></tr>
-  <tr><td>Product B</td></tr>
-  <tr><td>Product C</td></tr>
-  <tr><td>Product D</td></tr>
+<tr><td>Data Validation</td><td>Data → Validation</td></tr>
+<tr><td>Run Macros</td><td>Developer → Macros</td></tr>
 </table>
