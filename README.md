@@ -23,7 +23,7 @@
 <img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=3&color=gradient"/>
 
 <h2>About</h2>
-<p>The Excel Invoice System is an automated, beginner-friendly tool designed to simplify billing processes. By combining Excel formulas, dynamic dropdowns, and VBA automation, this system handles product selection, quantity conversions, and tax calculations automatically.</p>
+<p>The Excel Invoice System is an automated, beginner friendly tool designed to simplify billing processes. By combining Excel formulas, dynamic dropdowns, and VBA automation, this system handles product selection, quantity conversions, and tax calculations automatically.</p>
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=rect&height=3&color=gradient"/>
 
@@ -35,19 +35,19 @@
   </tr>
   <tr>
     <td>Automation</td>
-    <td>VBA-driven updates and calculations</td>
+    <td>VBA driven updates and calculations</td>
   </tr>
   <tr>
     <td>Data Management</td>
-    <td>Dropdown-based product database</td>
+    <td>Dropdown based product database</td>
   </tr>
   <tr>
     <td>Calculations</td>
-    <td>Auto-subtotal, tax, and grand totals</td>
+    <td>Auto subtotal, tax, and grand totals</td>
   </tr>
   <tr>
     <td>Units</td>
-    <td>Built-in conversion (kg to lbs)</td>
+    <td>Built in conversion (kg to lbs)</td>
   </tr>
 </table>
 
